@@ -3,7 +3,8 @@ const express = require("express"),
   bodyParser = require("body-parser"),
   cors = require("cors"),
   api = require("./api"),
-  { sequelize } = require("./models")
+  { sequelize } = require("./models"),
+  { swaggerUi, specs} = require("./swagger/swagger")
 // passport = require("passport"),
 // passportConfig = require("./middlewares/passport"),
 // cookieParser = require("cookie-parser")
@@ -24,6 +25,7 @@ sequelize
     console.error(err)
   })
 
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs))
 app.use("/api", api)
 app.get("/", (req, res) => res.send(`SERVER ON! PORT  : ${port}`))
 const port = 8000
