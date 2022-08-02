@@ -30,6 +30,9 @@ exports.searchBoard = async (req, res) => {
   }
 }
 
+/**
+ * @path {post} http://192.168.0.26:8000/api/board/
+ */
 exports.newBoard = async (req, res) => {
   const { id } = req.body.user,
     mid = req.params.id
